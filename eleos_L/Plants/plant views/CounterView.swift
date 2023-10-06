@@ -9,7 +9,20 @@ import SwiftUI
 
 struct CounterView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Rectangle()
+                .frame(width: 90,height: 50)
+                .cornerRadius(6)
+            .foregroundColor(Color("bg"))
+            HStack{
+                Image("drops")
+                    .resizable()
+                .frame(width: 40,height: 40)
+                Text("0")
+            }
+            
+        }
+        
     }
 }
 

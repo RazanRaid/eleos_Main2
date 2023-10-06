@@ -75,13 +75,6 @@ struct MainTodoListView: View {
                         Image(systemName: "plus")
                     }
                     
-                    #if DEBUG
-                    Button{
-                        showSampleDataalert=true
-                    }label: {
-                        Image(systemName:"clipboard")
-                    }
-                    #endif
                 }
                 }
             .sheet(isPresented: $showSheet) {
