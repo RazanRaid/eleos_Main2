@@ -11,7 +11,7 @@ struct MainTodoListView: View {
     
     @ObservedObject var todoManager : TodoManager
     @State private var showSheet = false
-    @State private var showSampleDataalert = false
+    @State private var iscompleted = false
     
     var body: some View {
         NavigationStack {
@@ -24,11 +24,12 @@ struct MainTodoListView: View {
                         Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                             .onTapGesture {
                                     todo.giveDrop = true
-                                todo.isCompleted.toggle()
+                                    todo.isCompleted.toggle()
                             }
                             .onAppear{
                                 todo.giveDrop=false
                             }
+                        
                         Text(todo.priortise ? "‼️" : "")
                         VStack(alignment: .leading ){
                             HStack{

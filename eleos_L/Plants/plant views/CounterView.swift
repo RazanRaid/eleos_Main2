@@ -23,9 +23,10 @@ struct CounterView: View {
                 Text("\(todosDone)")
                     .onAppear() {
                         for var todo in todoManager.todos{
-                            if todo.giveDrop {
-                                todosDone+=1
-                                todo.giveDrop.toggle()
+                            if todo.giveDrop && todo.isCompleted {
+                                withAnimation{
+                                todosDone+=1}
+                                todo.giveDrop = false
                             }
                         }
                         
