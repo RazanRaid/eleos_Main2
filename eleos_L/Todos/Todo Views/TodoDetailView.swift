@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+
 struct TodoDetailView: View {
-    
+ 
     var selectedTimeBinding: Binding<Date> {
             Binding<Date>(
                 get: { todo.selectedTime ?? Date() },
@@ -29,12 +30,12 @@ struct TodoDetailView: View {
             Section("Details"){
                 TextField("Title", text: $todo.title)
                 TextField("Subtitle", text: $todo.subtitle)
-                Toggle(isOn: $todo.isCompleted) {
-                    HStack{
-                        Image(systemName: "checkmark")
-                        Text("Completed?")
-                    }
-                }
+//                Toggle(isOn: $todo.isCompleted) {
+//                    HStack{
+//                        Image(systemName: "checkmark")
+//                        Text("Completed?")
+//                    }
+//                }
                 Toggle(isOn: $todo.priortise) {
                     HStack{
                         Image(systemName: "calendar.badge.exclamationmark")
@@ -66,7 +67,7 @@ struct TodoDetailView: View {
     struct TodoDetailView_Previews: PreviewProvider {
         static var previews: some View {
             NavigationStack{
-                TodoDetailView( todo:.constant( Todo(title: "online shopping", subtitle: "!!!!1!1!1")))
+                TodoDetailView( todo:.constant( Todo(title: "SUBMIT IOS APP", subtitle: "!!!!1!1!1")))
             }
         }
     }

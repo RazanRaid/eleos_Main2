@@ -11,7 +11,8 @@ struct MainTodoListView: View {
     
     @ObservedObject var todoManager : TodoManager
     @State private var showSheet = false
-    @State private var iscompleted = false
+
+    
     
     var body: some View {
         NavigationStack {
@@ -22,6 +23,7 @@ struct MainTodoListView: View {
                 }label: {
                     HStack {
                         Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
+                            .opacity(todo.isCompleted ? 0.5 : 1)
                             .onTapGesture {
                                     todo.giveDrop = true
                                     todo.isCompleted.toggle()
@@ -35,6 +37,8 @@ struct MainTodoListView: View {
                             HStack{
                                 Text(todo.title)
                                     .strikethrough( todo.isCompleted )
+//                                    .foregroundColor(todo.isCompleted ? .gray : .black)
+                                    .opacity(todo.isCompleted ? 0.5 : 1)
                                 .foregroundColor(todo.isOverdue ? .red : .primary)
                                 
                                 Text(todo.isOverdue ? "Overdue" : "")
