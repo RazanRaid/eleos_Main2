@@ -33,6 +33,7 @@ struct MainTodoListView: View {
                             }
                         
                         Text(todo.priortise ? "‼️" : "")
+                            .opacity(todo.isCompleted ? 0.5 : 1)
                         VStack(alignment: .leading ){
                             HStack{
                                 Text(todo.title)
