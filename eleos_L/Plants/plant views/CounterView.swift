@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CounterView: View {
+    @ObservedObject var todoManager : TodoManager
+    @AppStorage ("todosdone" ) var todosDone = 0
     var body: some View {
         ZStack{
             Rectangle()
@@ -18,16 +20,26 @@ struct CounterView: View {
                 Image("drops")
                     .resizable()
                 .frame(width: 40,height: 40)
-                Text("0")
+                Text("\(todosDone)")
+                    .onAppear() {
+                        for var todo in todoManager.todos{
+                            if todo.giveDrop {
+                                todosDone+=1
+                                todo.giveDrop.toggle()
+                            }
+                        }
+                        
+                    }
+                    }
             }
             
         }
         
     }
-}
+
 
 struct CounterView_Previews: PreviewProvider {
     static var previews: some View {
-        CounterView()
+        CounterView(todoManager: TodoManager())
     }
 }

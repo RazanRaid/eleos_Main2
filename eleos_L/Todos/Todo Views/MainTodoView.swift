@@ -23,7 +23,11 @@ struct MainTodoListView: View {
                     HStack {
                         Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                             .onTapGesture {
+                                    todo.giveDrop = true
                                 todo.isCompleted.toggle()
+                            }
+                            .onAppear{
+                                todo.giveDrop=false
                             }
                         Text(todo.priortise ? "‼️" : "")
                         VStack(alignment: .leading ){
@@ -68,13 +72,14 @@ struct MainTodoListView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                     }
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
+
+                                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
                        showSheet=true
                     }label: {
                         Image(systemName: "plus")
                     }
-                    CounterView()
+                    CounterView(todoManager: todoManager)
                 }
                 }
             .sheet(isPresented: $showSheet) {
