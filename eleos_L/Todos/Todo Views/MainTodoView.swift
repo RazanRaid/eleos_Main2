@@ -74,7 +74,7 @@ struct MainTodoListView: View {
                     }label: {
                         Image(systemName: "plus")
                     }
-                    
+                    CounterView()
                 }
                 }
             .sheet(isPresented: $showSheet) {
